@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeet Kune Do - Český Těšín</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #bbb;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --tyrkysova-barva: #3a8d8c;
+      --text-seda: #cccccc;
+    }
+
+    #top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--tyrkysova-barva);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+
+    header, nav {
+      margin: 0;
+      padding: 10px 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      height: 120px;
+    }
+
+    .left-space, .right-space, .space-left, .space-right {
+      flex-grow: 1;
+    }
+
+    .logo, .brucelee {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    h1 {
+      margin: 0 10px;
+      white-space: nowrap;
+      font-size: 1.8em;
+      color: var(--text-seda);
+      user-select: none;
+    }
+
+    nav {
+      text-align: center;
+      padding: 8px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    nav a {
+      color: var(--text-seda);
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    nav a:hover {
+      color: #e0f7f5;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      scroll-margin-top: 160px;
+    }
+
+    h2 {
+      color: var(--tyrkysova-barva);
+      border-bottom: 2px solid #176d64;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .instructors {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .instructor {
+      background-color: var(--tyrkysova-barva);
+      padding: 15px;
+      border-radius: 8px;
+      width: 260px;
+      text-align: center;
+      color: var(--text-seda);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    .instructor:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(42, 157, 143, 0.9);
+    }
+
+    .instructor img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    #why-jkd ul {
+      list-style: none;
+      padding: 0;
+      color: #ddd;
+    }
+
+    #why-jkd li::before {
+      content: '✅';
+      margin-right: 8px;
+      color: var(--tyrkysova-barva);
+    }
+
+    #why-jkd li {
+      margin-bottom: 8px;
+    }
+
+    .review {
+      margin-bottom: 18px;
+    }
+
+    .review .name {
+      color: var(--tyrkysova-barva);
+      font-weight: bold;
+    }
+
+    .review .stars {
+      color: #ffd700;
+      font-size: 1.2em;
+      margin: 4px 0;
+    }
+
+    .review .text {
+      font-style: italic;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    .gallery img, .gallery video {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(42,157,143,0.7);
+      user-select: none;
+    }
+
+    .upload-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .upload-section input[type="file"] {
+      padding: 8px;
+      background-color: var(--tyrkysova-barva);
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #contact a {
+      color: var(--tyrkysova-barva);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    #contact a:hover {
+      color: #a1f0ec;
+    }
+
+    footer {
+      background-color: var(--tyrkysova-barva);
+      color: var(--text-seda);
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+      user-select: none;
+    }
+
+    footer a {
+      color: var(--text-seda);
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      color: #a1f0ec;
+    }
+
+    /* ÚPRAVA: Šikmé písmo pro odpovědi ve FAQ */
+    #faq p {
+      font-style: italic;
+    }
+
+    #faq p strong {
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <div id="top-bar">
+    <header>
+      <div class="left-space"></div>
+      <img src="images/logo.jpg" alt="Logo" class="logo" />
+      <div class="space-left"></div>
+      <h1>Jeet Kune Do - Český Těšín</h1>
+      <div class="space-right"></div>
+      <img src="images/Brucelee.png" alt="Bruce Lee" class="brucelee" />
+      <div class="right-space"></div>
+    </header>
+
+    <nav>
+      <a href="#about">O nás</a>
+      <a href="#why-jkd">Proč trénovat</a>
+      <a href="#instructors">Trenéři</a>
+      <a href="#schedule">Tréninky</a>
+      <a href="#events">Události</a>
+      <a href="#pricing">Ceník</a>
+      <a href="#faq">FAQ</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#reviews">Recenze</a>
+      <a href="#contact">Kontakt</a>
+      <a href="https://jkdjoaquinmarcelo.com/en/index.php#" target="_blank" rel="noopener noreferrer">JKD Joaquín Marcelo</a>
+    </nav>
+  </div>
+
+  <section id="about">
+    <h2>O nás</h2>
+    <p>Jsme skupina zaměřená na Jeet Kune Do a reálnou sebeobranu v Českém Těšíně. Naším cílem je efektivní výuka technik založených na principech Bruce Lee a jejich moderní aplikace.</p>
+  </section>
+
+  <section id="why-jkd">
+    <h2>Proč trénovat Jeet Kune Do?</h2>
+    <ul>
+      <li>Praktická a použitelná sebeobrana</li>
+      <li>Rozvoj fyzické kondice, koordinace a sebevědomí</li>
+      <li>Myšlení „mimo rámec“ – adaptace na jakoukoli situaci</li>
+      <li>Individuální přístup – žádná pevná forma nebo dogma</li>
+      <li>Spojení různých stylů do funkčního celku</li>
+    </ul>
+  </section>
+
+  <section id="instructors">
+    <h2>Tréneři</h2>
+    <div class="instructors">
+      <div class="instructor">
+        <img src="https://via.placeholder.com/100" alt="Hlavní trenér" />
+        <h3>Mgr. Rudolf Hrubiško</h3>
+        <p>Instruktor JKD concept Berlín pod vedením Sifu Selim Bugur, Trenér TWJKD pod vedením Sifu Joaquín Marcelo</p>
+      </div>
+      <div class="instructor">
+        <img src="https://via.placeholder.com/100" alt="Asistent trenéra" />
+        <h3>Jiří Dywor</h3>
+        <p>6 level JKD Concept Berlín pod vedením Sifu Selim Bugur, Trenér v přípravě TWJKD pod vedením Sifu Joaquín Marcelo</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <h2>Tréninky</h2>
+    <p>Tréninky probíhají každé pondělí a čtvrtek od 18:00 do 20:00 hod.</p>
+  </section>
+
+  <section id="events">
+    <h2>Události</h2>
+    <p>Seminář Jeet Kune Do v Brně 7.-8.6.2025 pod vedením Sifu Joaquín Marcelo.</p>
+    <p>7.Letní soustředění Jeet Kune Do Czech v Brně 4.-6.7.2025 pod vedením David Volánek.</p>
+  </section>
+
+  <section id="pricing">
+    <h2>Ceník</h2>
+    <p>V intervalu jednou týdně:   650 Kč/měsíc</p>  
+    <p>V intervalu dvakrát týdně:  900 Kč/měsíc</p>
+    <p>Po dohodě možnost soukromých lekcí od 300 Kč</p>
+  </section>
+
+  <section id="faq">
+    <h2>Často kladené dotazy (FAQ)</h2>
+    <p><strong>Musím mít předchozí zkušenosti?</strong> Potřebuješ jen chuť a dobrou náladu. Tréninky jsou vhodné i pro začátečníky.</p>
+    <p><strong>Jaké oblečení, případně výstroj si musím vzít na trénik sebou?</strong> Potřebuješ jen sportovní oblečení a obuv do tělocvičny. Vše ostatní si řekneme na tréninku osobně.</p>
+  </section>
+
+  <section id="gallery">
+  <h2>Galerie</h2>
+
+  <div class="gallery" id="gallery-container">
+    <img src="images/Sidekick.jpg" alt="sidekick" />
+    <img src="images/Sranda.jpg" alt="sranda" />
+    <img src="images/hcjkd.jpg" alt="hcjkd" />
+    <img src="images/zem.jpg" alt="zem" />
+    <img src="images/Joaquín.jpg" alt="joaquin" />
+    <img src="images/kamera.jpg" alt="kamera" />
+  </div>
+
+  <div class="video-container" style="margin-top: 2rem; text-align: center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/EbdYrRRdG4Y" 
+            title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+            encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+
+  <section id="reviews">
+    <h2>Recenze</h2>
+    <div class="review">
+      <div class="name">Andrea B.</div>
+      <div class="stars">★★★★★</div>
+      <div class="text">Každý neví co je to Jeet kune do, ani já to moc nevěděla, když jsem si to šla "jenom vyzkoušet" a už v to jedu druhý rok pod vedením zkušeného trenéra v partě nadšených lidí objevuji pouliční bojové umění. Doporučila bych to každému kdo se chce hýbat, pracovat s energií a něco nového se naučit.</div>
+    </div>
+    <div class="review">
+      <div class="name">Martin R.</div>
+      <div class="stars">★★★★☆</div>
+      <div class="text">Výborná škola s důrazem na reálnou sebeobranu. Skvělé tréninky, profesionální přístup a přátelská atmosféra!</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <p>Email: jkd.ceskytesin@gmail.com</p>
+    <p>Telefon: +420 778 403 924</p>
+    <p>Adresa: Malá telocvična ZŠ Masarykova, Český Těšín</p>
+    <p>
+      Web: <a href="https://jkdjoaquinmarcelo.com/en/index.php#" target="_blank" rel="noopener noreferrer">JKD Joaquín Marcelo</a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Jeet Kune Do Český Těšín &nbsp;&nbsp;
+    <a href="#contact">Kontakt</a> |
+    <a href="#gallery">Galerie</a> |
+    <a href="#reviews">Recenze</a>
+  </footer>
+</body>
+</html>
