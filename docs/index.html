@@ -400,5 +400,20 @@
     'wrapAround': true
   });
 </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    lightbox.option({
+      resizeDuration: 200,
+      wrapAround: true
+    });
+
+    // Posun nahoru při otevření lightboxu (mobilní zařízení)
+    document.addEventListener("lightbox-start", function () {
+      if (window.innerWidth < 768) {
+        setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+      }
+    });
+  });
+</script>
 </body>
 </html>
