@@ -229,6 +229,32 @@
     #faq p strong {
       font-style: normal;
     }
+    /* 🔧 MOBILNÍ ÚPRAVY – první problém */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.2em;
+    text-align: center;
+    white-space: normal; /* řádky se zalamují */
+    width: 100%;
+  }
+
+  .logo, .brucelee {
+    width: 80px;
+    height: 80px;
+  }
+
+  .left-space, .right-space, .space-left, .space-right {
+    display: none;
+  }
+}
+
   </style>
 </head>
 <body>
