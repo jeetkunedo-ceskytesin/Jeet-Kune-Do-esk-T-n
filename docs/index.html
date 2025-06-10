@@ -169,11 +169,13 @@
     }
 
     .gallery img, .gallery video {
-      width: 100%;
-      border-radius: 6px;
-      box-shadow: 0 0 5px rgba(42,157,143,0.7);
-      user-select: none;
-    }
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(42,157,143,0.7);
+  user-select: none;
+}
 
     .upload-section {
       text-align: center;
