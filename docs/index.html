@@ -224,15 +224,13 @@
       color: #a1f0ec;
     }
 
-    /* ÚPRAVA: Šikmé písmo pro odpovědi ve FAQ */
-    #faq p {
+   #faq p {
       font-style: italic;
     }
 
     #faq p strong {
       font-style: normal;
     }
-    /* 🔧 MOBILNÍ ÚPRAVY – první problém */
 @media (max-width: 768px) {
   header {
     flex-wrap: wrap;
@@ -326,10 +324,10 @@
 
   <section id="events">
     <h2>Události</h2>
-    <p>Seminář Jeet Kune Do v Brně 7.-8.6.2025 pod vedením Sifu Joaquín Marcelo.</p>
     <p>7.Letní soustředění Jeet Kune Do Czech v Brně 4.-6.7.2025 pod vedením David Volánek.</p>
     <p>Seminář Streetkickboxing v Brně 2.8.2025 pod vedením David Volánek.</p>
     <p>Seminář Jeet Kune Do Concept v Brně 30.8.2025 pod vedením Sifu Selim Bugur.</p>
+    <p>Seminář Hardcore Jeet Kune Do v Brně 28.9.2025 pod vedením David Volánek.</p>
     
   </section>
 
@@ -410,14 +408,13 @@
     wrapAround: true
   });
 
-  // 🔵 OPRAVA: vynucený posun na začátek stránky při otevření obrázku v lightboxu na mobilu
   const galleryLinks = document.querySelectorAll('[data-lightbox="jkd"]');
   galleryLinks.forEach(link => {
     link.addEventListener('click', function () {
       if (window.innerWidth < 768) {
         setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'instant' }); // 🔵 bylo: 'smooth'
-        }, 10); // 🔵 bylo: 50ms – menší zpoždění = přesnější výsledek
+          window.scrollTo({ top: 0, behavior: 'instant' }); 
+        }, 10); 
       }
     });
   });
