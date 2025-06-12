@@ -404,18 +404,23 @@
 </script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-    lightbox.option({
-      resizeDuration: 200,
-      wrapAround: true
-    });
+  lightbox.option({
+    resizeDuration: 200,
+    wrapAround: true
+  });
 
-    // Posun nahoru při otevření lightboxu (mobilní zařízení)
-    document.addEventListener("lightbox-start", function () {
+  // 🔵 OPRAVA: vynucený posun na začátek stránky při otevření obrázku v lightboxu na mobilu
+  const galleryLinks = document.querySelectorAll('[data-lightbox="jkd"]');
+  galleryLinks.forEach(link => {
+    link.addEventListener('click', function () {
       if (window.innerWidth < 768) {
-        setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'instant' }); // 🔵 bylo: 'smooth'
+        }, 10); // 🔵 bylo: 50ms – menší zpoždění = přesnější výsledek
       }
     });
   });
+});
 </script>
 </body>
 </html>
