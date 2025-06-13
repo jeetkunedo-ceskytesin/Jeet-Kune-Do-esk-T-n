@@ -401,24 +401,27 @@
     'wrapAround': true
   });
 </script>
-  <script>
+<script>
   document.addEventListener("DOMContentLoaded", function () {
-  lightbox.option({
-    resizeDuration: 200,
-    wrapAround: true
-  });
+    lightbox.option({
+      resizeDuration: 200,
+      wrapAround: true
+    });
 
-  const galleryLinks = document.querySelectorAll('[data-lightbox="jkd"]');
-  galleryLinks.forEach(link => {
-    link.addEventListener('click', function () {
-      if (window.innerWidth < 768) {
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'instant' }); 
-        }, 10); 
-      }
+    const galleryLinks = document.querySelectorAll('[data-lightbox="jkd"]');
+    const gallerySection = document.getElementById("gallery");
+
+    galleryLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        if (window.innerWidth < 768) {
+          setTimeout(() => {
+            gallerySection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 300);
+        }
+      });
     });
   });
-});
 </script>
+
 </body>
 </html>
