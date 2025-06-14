@@ -240,19 +240,21 @@
     #faq p strong {
       font-style: normal;
     }
+    
     @media (max-width: 768px) {
   header {
-    flex-wrap: wrap;
-    justify-content: center;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
+    height: auto;
+    text-align: center;
   }
 
   h1 {
     font-size: 1.2em;
-    text-align: center;
-    white-space: normal; /* řádky se zalamují */
-    width: 100%;
+    margin-bottom: 10px;
+    white-space: normal;
   }
 
   .logo, .brucelee {
@@ -268,11 +270,14 @@
     position: static;
   }
 
-  .header-images {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
+  .logo, .brucelee {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .logo + .space-left,
+  .space-right + .brucelee {
+    display: none;
   }
 }
 
