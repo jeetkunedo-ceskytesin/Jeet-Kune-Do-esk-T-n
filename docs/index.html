@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jeet Kune Do - Český Těšín</title>
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
+
   <style>
     body {
       background-color: #000;
@@ -58,13 +59,6 @@
       user-select: none;
     }
 
-    .hamburger {
-      display: none;
-      font-size: 1.6em;
-      cursor: pointer;
-      user-select: none;
-    }
-
     nav {
       text-align: center;
       padding: 8px 0;
@@ -99,68 +93,239 @@
       user-select: none;
     }
 
-    @media (max-width: 768px) {
-      header {
-        flex-wrap: wrap;
-        justify-content: center;
-        height: auto;
-        padding: 10px;
-        position: relative;
-      }
-
-      h1 {
-        order: 1;
-        font-size: 1.2em;
-        text-align: center;
-        width: 100%;
-        margin-bottom: 8px;
-        white-space: normal;
-      }
-
-      .logo {
-        order: 2;
-        width: 80px;
-        height: 80px;
-      }
-
-      .brucelee {
-        order: 3;
-        width: 80px;
-        height: 80px;
-        margin-left: 12px;
-      }
-
-      .left-space, .right-space, .space-left, .space-right {
-        display: none;
-      }
-
-      .hamburger {
-        display: block;
-        position: absolute;
-        top: 10px;
-        right: 20px;
-      }
-
-      nav {
-        display: none;
-        flex-direction: column;
-        background-color: var(--tyrkysova-barva);
-      }
-
-      nav.show {
-        display: flex;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0;
-        border-bottom: 1px solid #176d64;
-      }
-
-      section {
-        scroll-margin-top: 180px;
-      }
+    .instructors {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
+
+    .instructor {
+      background-color: var(--tyrkysova-barva);
+      padding: 15px;
+      border-radius: 8px;
+      width: 260px;
+      text-align: center;
+      color: var(--text-seda);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    .instructor:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(42, 157, 143, 0.9);
+    }
+
+    .instructor img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    #why-jkd ul {
+      list-style: none;
+      padding: 0;
+      color: #ddd;
+    }
+
+    #why-jkd li::before {
+      content: '✅';
+      margin-right: 8px;
+      color: var(--tyrkysova-barva);
+    }
+
+    #why-jkd li {
+      margin-bottom: 8px;
+    }
+
+    .review {
+      margin-bottom: 18px;
+    }
+
+    .review .name {
+      color: var(--tyrkysova-barva);
+      font-weight: bold;
+    }
+
+    .review .stars {
+      color: #ffd700;
+      font-size: 1.2em;
+      margin: 4px 0;
+    }
+
+    .review .text {
+      font-style: italic;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    .gallery img, .gallery video {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(42,157,143,0.7);
+  user-select: none;
+  scroll-margin-top: 140px;
+}
+    
+    .video-container iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(42,157,143,0.7);
+  display: block;
+}
+
+    .upload-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .upload-section input[type="file"] {
+      padding: 8px;
+      background-color: var(--tyrkysova-barva);
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #contact a {
+      color: var(--tyrkysova-barva);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    #contact a:hover {
+      color: #a1f0ec;
+    }
+
+    footer {
+      background-color: var(--tyrkysova-barva);
+      color: var(--text-seda);
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+      user-select: none;
+    }
+
+    footer a {
+      color: var(--text-seda);
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      color: #a1f0ec;
+    }
+
+   #faq p {
+      font-style: italic;
+    }
+
+    #faq p strong {
+      font-style: normal;
+    }
+@media (max-width: 768px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    padding: 10px;
+    position: relative;
+  }
+
+  h1 {
+    order: 1;
+    font-size: 1.2em;
+    text-align: center;
+    white-space: normal;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    order: 2;
+    width: 80px;
+    height: 80px;
+  }
+
+  .brucelee {
+    order: 3;
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 1.8em;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    color: var(--text-seda);
+    z-index: 1100;
+  }
+
+  .left-space, .right-space, .space-left, .space-right {
+    display: none;
+  }
+
+  #top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--tyrkysova-barva);
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  nav a {
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #176d64;
+  }
+
+  section {
+    scroll-margin-top: 140px;
+  }
+}
+
+@media (min-width: 769px) {
+  .video-container iframe {
+    width: 320px;
+    height: 180px;
+  }
+}
 
   </style>
 </head>
@@ -176,7 +341,8 @@
       <div class="right-space"></div>
       <div class="hamburger" id="hamburger">&#9776;</div>
     </header>
-    <nav id="nav-menu">
+
+    <nav>
       <a href="#about">O nás</a>
       <a href="#why-jkd">Proč trénovat</a>
       <a href="#instructors">Trenéři</a>
@@ -191,7 +357,7 @@
     </nav>
   </div>
 
-   <section id="about">
+  <section id="about">
     <h2>O nás</h2>
     <p>Jsme skupina zaměřená na Jeet Kune Do a reálnou sebeobranu v Českém Těšíně. Naším cílem je efektivní výuka technik založených na principech Bruce Lee a jejich moderní aplikace.</p>
   </section>
@@ -300,23 +466,17 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox-plus-jquery.min.js"></script>
-  <script>
+<script>
+  lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     lightbox.option({
       resizeDuration: 200,
       wrapAround: true
-    });
-
-    const hamburger = document.getElementById("hamburger");
-    const navMenu = document.getElementById("nav-menu");
-
-    hamburger.addEventListener("click", function () {
-      navMenu.classList.toggle("show");
-    });
-
-      document.querySelectorAll("#nav-menu a").forEach(link => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("show");
-      });
     });
 
     const galleryLinks = document.querySelectorAll('[data-lightbox="jkd"]');
@@ -331,6 +491,23 @@
         }
       });
     });
-  </script>
+  });
+</script>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.querySelector("nav");
+
+  hamburger.addEventListener("click", function () {
+    navMenu.classList.toggle("show");
+  });
+
+  document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("show");
+    });
+  });
+</script>
+
 </body>
 </html>
