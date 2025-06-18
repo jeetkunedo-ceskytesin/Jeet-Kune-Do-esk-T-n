@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jkd-ceskytesin.cz/sitemap.xml
